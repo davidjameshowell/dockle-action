@@ -48,7 +48,7 @@ inputs:
     description: "Override the DOCKLE_HOST environment variable"
     required: false
     default: "unix:///var/run/docker.sock"
-  dockle-ignore:
+  dockle-ignores:
     description: "Ignore specific checkpoints by Dockle checkpoint IDs (e.g. CIS-DI-0001,DKL-DI-0006) https://github.com/goodwithtech/dockle?tab=readme-ov-file#ignore-the-specified-checkpoints:~:text=Or%2C%20use-,DOCKLE_IGNORES,-%3A"
     required: false
     default: ""
