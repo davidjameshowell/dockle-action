@@ -52,6 +52,10 @@ inputs:
     description: "Ignore specific checkpoints by Dockle checkpoint IDs (e.g. CIS-DI-0001,DKL-DI-0006) https://github.com/goodwithtech/dockle?tab=readme-ov-file#ignore-the-specified-checkpoints:~:text=Or%2C%20use-,DOCKLE_IGNORES,-%3A"
     required: false
     default: ""
+  dockle-non-ssl:
+    description: "Use non-SSL when checking out image registry"
+    required: false
+    default: ""
   token:
     description: "GitHub token used to query the GitHub API"
     required: false
@@ -85,6 +89,7 @@ runs:
         DOCKLE_TIMEOUT: ${{ inputs.timeout }}
         DOCKLE_HOST: ${{ inputs.dockle-host }}
         DOCKLE_IGNORES: ${{ inputs.dockle-ignores }}
+        DOCKLE_NON_SSL: ${{ inputs.dockle-non-ssl }}
       run: |
         # Exit always with exit 0 to continue with the stdout version
         dockle -f "$REPORT_FORMAT" -o "$REPORT_NAME.$REPORT_FORMAT" --exit-code 0 --exit-level "$FAILURE_THRESHOLD" "$IMAGE"
