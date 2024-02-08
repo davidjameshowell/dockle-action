@@ -56,6 +56,10 @@ inputs:
     description: "Use non-SSL when checking out image registry"
     required: false
     default: ""
+  dockle-auth-url:
+    description: "Registry to authenticate against"
+    required: false
+    default: ""
   token:
     description: "GitHub token used to query the GitHub API"
     required: false
@@ -90,6 +94,7 @@ runs:
         DOCKLE_HOST: ${{ inputs.dockle-host }}
         DOCKLE_IGNORES: ${{ inputs.dockle-ignores }}
         DOCKLE_NON_SSL: ${{ inputs.dockle-non-ssl }}
+        DOCKLE_AUTH_URL: ${{ inputs.dockle-auth-url }}
       run: |
         # Exit always with exit 0 to continue with the stdout version
         dockle -f "$REPORT_FORMAT" -o "$REPORT_NAME.$REPORT_FORMAT" --exit-code 0 --exit-level "$FAILURE_THRESHOLD" "$IMAGE"
